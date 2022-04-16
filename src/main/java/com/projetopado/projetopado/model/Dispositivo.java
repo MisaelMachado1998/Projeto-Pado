@@ -1,5 +1,6 @@
 package com.projetopado.projetopado.model;
 
+import com.projetopado.projetopado.dto.DispositivoDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,4 +25,8 @@ public class Dispositivo implements Serializable {
     private String email;
     private Integer latitude;
     private Integer longitude;
+
+    public DispositivoDto obterDispositivoDto(){
+        return new DispositivoDto(this.deviceId,this.mac);
+    }
 }

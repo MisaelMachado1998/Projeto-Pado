@@ -1,5 +1,6 @@
 package com.projetopado.projetopado.service;
 
+import com.projetopado.projetopado.dto.DispositivoDto;
 import com.projetopado.projetopado.model.Dispositivo;
 import com.projetopado.projetopado.repository.DispositivoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,9 @@ public class DispositivoService {
     DispositivoRepository dispositivoRepository;
 
 
-    public Dispositivo salvar(@RequestBody Dispositivo dispositivo) {
-        return dispositivoRepository.save(dispositivo);
+    public DispositivoDto salvar(@RequestBody Dispositivo dispositivo) {
+        var dispositivoSalvo = this.dispositivoRepository.save(dispositivo);
+        return dispositivoSalvo.obterDispositivoDto();
     }
 
     public List<Dispositivo> listarDispositivos() {

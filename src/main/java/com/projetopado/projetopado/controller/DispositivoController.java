@@ -1,9 +1,12 @@
 package com.projetopado.projetopado.controller;
 
+import com.projetopado.projetopado.dto.DispositivoDto;
 import com.projetopado.projetopado.model.Dispositivo;
 import com.projetopado.projetopado.service.DispositivoService;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -20,8 +23,9 @@ public class DispositivoController {
 
     @PostMapping
     @RequestMapping("/registrar")
-    private Dispositivo salvarDispositivo(@RequestBody Dispositivo dispositivo) {
-        return dispositivoService.salvar(dispositivo);
+
+    private ResponseEntity<DispositivoDto> salvarDispositivo(@RequestBody Dispositivo dispositivo) {
+        return new ResponseEntity<DispositivoDto>(this.dispositivoService.salvar(dispositivo), HttpStatus.CREATED);
     }
 
     @GetMapping
