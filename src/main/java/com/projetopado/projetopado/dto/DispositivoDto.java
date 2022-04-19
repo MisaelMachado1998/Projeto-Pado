@@ -2,8 +2,10 @@ package com.projetopado.projetopado.dto;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class DispositivoDto {
+public class DispositivoDto implements Serializable {
     private Long deviceId;
     private String mac;
 

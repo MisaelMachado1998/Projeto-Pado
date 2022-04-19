@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
 import java.util.List;
 import java.util.Optional;
 
@@ -38,6 +37,12 @@ public class DispositivoController {
     @RequestMapping("/listar/{id}")
     public Optional<Dispositivo> listarPorId(@PathVariable Long id) {
         return dispositivoService.listarPorId(id);
+    }
+
+    @PostMapping
+    @RequestMapping("/registrar/async")
+    private List<Long> salvarLista(@RequestBody List<Dispositivo> dispositivoList) {
+        return dispositivoService.salvarLista(dispositivoList);
     }
 }
 
